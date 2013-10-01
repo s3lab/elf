@@ -66,11 +66,17 @@ To enable this functionality, you need to:
   ```
 * Use REST API to register network topology with elf service:
     1. Register root switch of the network: 
-  
-        curl -d '["the dpid of root switch"]' http://controller ip:controller port/wm/hadooptopology/root/json 
+    
+<pre><code>
+curl -d '["the dpid of root switch"]' http://controller ip:controller port/wm/hadooptopology/root/json.
+</code></pre>
+         
       e.g. the root dpid is 00:00:00:00:00:00:00:01, your elf service (floodlight controller) is running on localhost:8080,
         then this registration should be like: 
- 
+
+<pre><code>
+ curl -d '["00:00:00:00:00:00:00:01"]' http://localhost:8080/wm/hadooptopology/root/json
+</code></pre 
         curl -d '["00:00:00:00:00:00:00:01"]' http://localhost:8080/wm/hadooptopology/root/json    
 
     2. Register the gateway switches
