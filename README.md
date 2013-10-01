@@ -10,7 +10,6 @@
 </pre>                    
 
 
-===============
    Install
 ===============
 
@@ -35,7 +34,7 @@ Elf can be built from source code.
     - Go to elf/hadoop dir
     - Compile by: ant clean; ant
 
-===============
+
   Running elf
 ===============
 
@@ -49,27 +48,27 @@ To enable this functionality, you need to:
               <value>org.apache.hadoop.net.SDNTopologyManager</value>
      </property>
 3. Use REST API to register network topology with elf service:
-    - Register root switch of the network: 
-
-        curl -d '["the dpid of root switch"]' http://controller ip:controller port/wm/hadooptopology/root/json    
-
+    * Register root switch of the network: 
+  <pre>
+               curl -d '["the dpid of root switch"]' http://controller ip:controller port/wm/hadooptopology/root/json 
+ </pre>
       e.g. the root dpid is 00:00:00:00:00:00:00:01, your elf service (floodlight controller) is running on localhost:8080,
         then this registration should be like: 
-
+ <pre>
         curl -d '["00:00:00:00:00:00:00:01"]' http://localhost:8080/wm/hadooptopology/root/json    
-
-    - Register the gateway switches
-
+ </pre>
+    * Register the gateway switches
+ <pre>
         curl -d '{"datacenter id":["gateway1 dpid", "gateway2 dpid" ... ], ... }' http://controller ip:controller port/wm/hadooptopology/gateway/json
-
+ </pre>
       e.g. there are 2 datacenters, named dc1 and dc2. the gateways of dc1 is 00:00:00:00:00:00:00:02 and 00:00:00:00:00:00:00:03. The gateway of dc2 
       is 00:00:00:00:00:00:00:04, then the registration would be like this:
-
+ <pre>
         curl -d '{"dc1":["00:00:00:00:00:00:00:02", "00:00:00:00:00:00:00:03"], "dc2":["00:00:00:00:00:00:00:04"] }' http://localhost:8080/wm/hadooptopology/gateway/json
-
-    After these setting up, you can verify them by querying a host, e.g. 10.0.0.1 using: 
-
+ </pre>
+    * After these setting up, you can verify them by querying a host, e.g. 10.0.0.1 using: 
+ <pre>
         curl -s http://localhost:8080/wm/hadooptopology/?host=10.0.0.1
-
+ </pre>
     This should return the network location according to your registration. Our patched datacenter aware Hadoop will use a similar API to conmmunicate with the elf service
     
