@@ -16,8 +16,11 @@
 Elf can be built from source code. 
 
  Build elf service.
+ 
  1. Prerequisites
+    
     1.1 Java JDK. (Our tests are based on sun JDK 1,6, other version e.g. 1.7 or openjdk should work as well, but not tested). You can download JDK 1.6 from http://tinyurl.com/7w2jeyl, and follow the install instruction there to get Java ready.
+    
     1.2 Apache Ant. Install by: apt-get install ant
  2. Compile
     2.1 Go to elf/floodlight dir
