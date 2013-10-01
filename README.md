@@ -67,21 +67,18 @@ To enable this functionality, you need to:
     1. Register root switch of the network: 
   
         curl -d '["the dpid of root switch"]' http://controller ip:controller port/wm/hadooptopology/root/json 
- 
       e.g. the root dpid is 00:00:00:00:00:00:00:01, your elf service (floodlight controller) is running on localhost:8080,
         then this registration should be like: 
  
         curl -d '["00:00:00:00:00:00:00:01"]' http://localhost:8080/wm/hadooptopology/root/json    
- 
+
     2. Register the gateway switches
 
         curl -d '{"datacenter id":["gateway1 dpid", "gateway2 dpid" ... ], ... }' http://controller ip:controller port/wm/hadooptopology/gateway/json
-
-      e.g. there are 2 datacenters, named dc1 and dc2. the gateways of dc1 is 00:00:00:00:00:00:00:02 and 00:00:00:00:00:00:00:03. The gateway of dc2 
+     e.g. there are 2 datacenters, named dc1 and dc2. the gateways of dc1 is 00:00:00:00:00:00:00:02 and 00:00:00:00:00:00:00:03. The gateway of dc2 
       is 00:00:00:00:00:00:00:04, then the registration would be like this:
 
         curl -d '{"dc1":["00:00:00:00:00:00:00:02", "00:00:00:00:00:00:00:03"], "dc2":["00:00:00:00:00:00:00:04"] }' http://localhost:8080/wm/hadooptopology/gateway/json
-
     3. After these setting up, you can verify them by querying a host, e.g. 10.0.0.1 using: 
  
         curl -s http://localhost:8080/wm/hadooptopology/?host=10.0.0.1
