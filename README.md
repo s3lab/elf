@@ -1,13 +1,13 @@
  
 <pre>
-                  An Internet2 awarded project
+                An Internet2 awarded project
                       ________    ______
                      / ____/ /   / ____/
                     / __/ / /   / /_    
                    / /___/ /___/ __/    
                   /_____/_____/_/   
                   
-              An SDN Network Management for Hadoop
+           An SDN Network Management for Hadoop
 </pre>                    
 
 
