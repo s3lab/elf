@@ -28,7 +28,9 @@ Elf can be built from source code.
  
     Go to elf/floodlight dir
  
-    Compile by: ant clean; ant
+    Compile by: 
+
+        ant clean; ant
 
  3. Start Elf service
  
