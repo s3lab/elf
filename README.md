@@ -58,11 +58,12 @@ To enable this functionality, you need to:
 * Set up Hadoop cluster as normal, e.g. configure conf/*.xml and conf/masters conf/slaves. This is the basic configuration of Hadoop.
 * In conf/core-site.xml, add the following property:
  
+  ```xml
       <property>
               <name>topology.node.switch.mapping.impl</name>
               <value>org.apache.hadoop.net.SDNTopologyManager</value>
      </property>
- 
+  ```
 * Use REST API to register network topology with elf service:
     1. Register root switch of the network: 
   
