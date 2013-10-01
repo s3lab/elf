@@ -15,7 +15,7 @@
 
 Elf can be built from source code. 
 
- Build elf service.
+ * Build elf service.
  
  1. Prerequisites
     
@@ -39,12 +39,15 @@ Elf can be built from source code.
         java -jar target/floodlight.jar
         
 
- Build Hadoop-elf patch
+ * Build Hadoop-elf patch
+ 
  1. Prerequisites: the same as 1.1
- 2. Compile
-    2.1 Go to elf/hadoop dir
-    2.2 Compile by:
 
+ 2. Compile
+ 
+    2.1 Go to elf/hadoop dir
+
+    2.2 Compile by:
         
         ant clean; ant
         
