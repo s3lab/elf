@@ -7,7 +7,7 @@
                    / /___/ /___/ __/    
                   /_____/_____/_/   
                   
-           A SDN Network Management for Hadoop
+              An SDN Network Management for Hadoop
 </pre>                    
 
 
