@@ -56,7 +56,7 @@ Elf can be built from source code.
 Running elf
 ===============
 
-As a user case, we have built a multi-datacenter aware Hadoop.
+As a use case, we have built a multi-datacenter aware Hadoop.
 To enable this functionality, you need to:
 
 * Set up Hadoop cluster as normal, e.g. configure conf/*.xml and conf/masters conf/slaves. This is the basic configuration of Hadoop.
