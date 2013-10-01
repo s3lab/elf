@@ -35,9 +35,9 @@ Elf can be built from source code.
 
     3.2 Start as normal floodlight controller: 
     
-        ```
+        
         java -jar target/floodlight.jar
-        ```
+        
 
  Build Hadoop-elf patch
  1. Prerequisites: the same as 1.1
@@ -45,9 +45,9 @@ Elf can be built from source code.
     2.1 Go to elf/hadoop dir
     2.2 Compile by:
 
-        ````
+        
         ant clean; ant
-        ````
+        
 
   Running elf
 ===============
