@@ -21,10 +21,10 @@ Elf can be built from source code.
         as well, but not tested). You can download JDK 1.6 from http://tinyurl.com/7w2jeyl, and 
         follow the install instruction there to get Java ready.
        Apache Ant. Install by: apt-get install ant
- 2 Compile
+ * Compile
        Go to elf/floodlight dir
        Compile by: ant clean; ant
- 3 Start Elf service
+ * Start Elf service
         Go to elf/floodlight dir
         Start as normal floodlight controller: java -jar target/floodlight.jar
 
