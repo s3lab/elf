@@ -10,7 +10,7 @@
 </pre>                    
 
 
-   Install
+Install
 ===============
 
 Elf can be built from source code. 
@@ -50,7 +50,7 @@ Elf can be built from source code.
         ant clean; ant
         
 
-  Running elf
+Running elf
 ===============
 
 As a user case, we have built a multi-datacenter aware Hadoop.
@@ -65,9 +65,8 @@ To enable this functionality, you need to:
      </property>
   ```
 * Use REST API to register network topology with elf service:
-    1. Register root switch of the network: 
-<pre><code>
-curl -d '["the dpid of root switch"]' http://controller ip:controller port/wm/hadooptopology/root/json.
+    1. Register root switch of the network:
+<pre><code>curl -d '["the dpid of root switch"]' http://controller ip:controller port/wm/hadooptopology/root/json.
 </code></pre>
 
 For example the root dpid is 00:00:00:00:00:00:00:01, your elf service (floodlight controller) is running on localhost:8080, then this registration should be like:
