@@ -1,0 +1,2 @@
+./bin/hadoop namenode -format
+./bin/start-dfs.sh

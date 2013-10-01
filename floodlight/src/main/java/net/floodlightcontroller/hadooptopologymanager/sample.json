@@ -1,0 +1,7 @@
+# for setting root
+["8.8.8.8"]
+# for setting gateways
+{
+    "dc1":["1.1.1.1", "2.2.2.2"],
+    "dc2":["3.3.3.3"]
+}

@@ -1,0 +1,104 @@
+===============
+ What is elf?
+===============
+Elf is an SDN service that provides network topology abstraction and automatic management to big data processing frameworks, 
+such as Hadoop. 
+
+===============
+   Why elf?
+===============
+Most existing big data processing frameworks assume they are running on pre-defined network 
+topologies. For example, Hadoop assume the underlying network is a tree-based 2-tiers network: 
+hosts are organized in racks and then racks are connected via core switches. This is suitable 
+for the current in-house private datacenters such as Google's and Facebook's.
+However, when the network becomes complex, e.g. across multiple datacenter, the exiting solution 
+is incapable of getting sufficient information to do application-level optimization, 
+e.g. locality-aware scheduling.
+
+Elf simplifies the management of complex network in big data processing systems. The target user of elf 
+is the network administrator or researcher that want to use Hadoop across multiple datacenters. Elf requires 
+minimum manual network configuration: the network administrator just need to spcify a single logical root switch 
+and gateway switches of datacenters, all other configurations includeing top-of-rack switch detection and host 
+attatchment point detection are automatically done by elf. 
+
+In this way, the elf abstracts away a complex underlying network across multiple datacenters and provides a logical 
+network topology for the big data processing systems, such as Hadoop, to do the network-related optimization. 
+Based on elf, we have implemented two important new optimization that make Hadoop running faster across multiple 
+datacenters (see Design for details).
+
+===============
+   Design
+===============
+
+  Elf has two main parts: a elf service that provides network information to big data processing 
+frameworks; and a datacenter aware Hadoop implementation that uses the elf service to do datacenter-aware 
+block placement and prefetching.
+
+  * The elf service
+  The elf service is an SDN application based on the Floodlight controller. It gets the real topology information from 
+the device manager module and topology manager module of Floodlight, and abstracts them as what the application want. 
+  
+  We build elf service as an Floodlight module and load it from the Floodlight module-loading system at start time. In 
+the mean while, we also implemente a RESTful API for elf service to interact with the uplayer applications. The RESTful 
+API provides a max generality of the elf service: using RESTful API, the elf service could interact with any application, 
+no matter what langrage is used to implement the application, as long as it support some sort of RESTful communication.
+
+  * The datacenter-aware Hadoop
+  We have extend the Hadoop version 0.20.203 to use the elf service. It interacts with the elf service using RESTful API: 
+when the Hadoop HDFS and the MapReduce starts, it get abstracted network topology (rack- and datacenter-aware) from the 
+elf service. It do the following two optimizations to be "datacenter-aware"
+  - Datacenter-aware block placement. The placement strategy is that we maintain 3 replicas of 1 block at 2 different datacenters, 
+  in the one that has two replicas, we keep them on two different racks.
+  - Prefetching. when the cluster is across multiple datacenter, there must be some task that could not read data from local datacenter 
+  since all replicas are in a different datacenter. Our datacenter-aware Hadoop could indentify such non-datacenter-local tasks and prefetch 
+  them from remote sites to local sites before they are accessed, thus reduce the long and unpredictable latency of remote read
+
+===============
+ Known issues
+===============
+
+  The existing prefetched block management is not mature. We do not explicitly handle the case that the in-memory cache for prefetched 
+blocks is full. This might incur high memory usage in a long time scale. In the future, we could add a more efficient memory management 
+to manage the prefetched blocks. 
+
+  Also, based on the network topology management/abstraction that elf provides, many different network-related optimization could be done. 
+For example, 
+  
+  Finally, we didn't have a chance to deploy our application in a real wide-area environment due to the limited resoruces. We leave further 
+larger scale testing for our future work.
+
+===============
+ Code layout
+===============
+
+Most related code are in two subdir under the root dir of elf
+/elf
+  |-- floodlight: the sdn elf service
+    |-- src
+      |-- main
+        |-- java
+          |-- net
+            |-- floodlightcontroller
+              |-- hadooptopologymanager: The Elf service is in this directory
+      |-- resources
+        |-- floodlightdefault.properties: configuration file
+  |-- hadoop: the datacenter aware hadoop using the elf service
+    |-- src
+      |-- core
+        |-- org
+          |-- apache
+            |-- hadoop
+              |-- net: SDNTopologyManager.java: a SDN-based topology manager that interact with elf service
+      |-- hdfs
+        |-- org
+          |-- apache
+            |-- hadoop
+              |-- hdfs
+                |-- server: A implementation of datacenter-aware block placement strategy 
+      |-- mapred
+        |-- org
+          |-- apache
+            |-- hadoop
+              |-- mapred: A implementation of datacenter-aware task scheduling and data prefetching
+  |-- doc: document
+

@@ -1,0 +1,3 @@
+sudo rm -fr /tmp/hadoop*
+sudo rm -fr /tmp/Jet*
+sudo rm /dev/shm/hadoop*

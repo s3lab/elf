@@ -1,0 +1,2 @@
+bin/hadoop fs -put input input
+bin/hadoop fs -ls

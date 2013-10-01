@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/test" isTestSource="true" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="lib1" level="project" />
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../../contrib/index/hadoop-index-0.20.203.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="library" name="common" level="project" />
+    <orderEntry type="library" name="stable-jar" level="project" />
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../../contrib/fairscheduler/hadoop-fairscheduler-0.20.203.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../../contrib/capacity-scheduler/hadoop-capacity-scheduler-0.20.203.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="library" name="build" level="project" />
+    <orderEntry type="module" module-name="fairscheduler" />
+    <orderEntry type="module" module-name="elf" />
+    <orderEntry type="module" module-name="capacity-scheduler" />
+    <orderEntry type="module" module-name="test1" />
+    <orderEntry type="module" module-name="gridmix2" />
+    <orderEntry type="module" module-name="capacity-scheduler" />
+    <orderEntry type="module" module-name="test1" />
+    <orderEntry type="module" module-name="fairscheduler" />
+    <orderEntry type="module" module-name="hadoop" />
+    <orderEntry type="module" module-name="gridmix2" />
+  </component>
+</module>
+

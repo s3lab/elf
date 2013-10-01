@@ -1,0 +1,2 @@
+rsync -r /home/codefish/repo/gitlab-repo/elf/src/src/ /home/codefish/workspace/project/elf/src/src/
+ant
