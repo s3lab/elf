@@ -15,24 +15,24 @@
 
 Elf can be built from source code. 
 
-1. Build elf service.
- 1.1 Prerequisites
-    - Java JDK. (Our tests are based on sun JDK 1,6, other version e.g. 1.7 or openjdk should work
+ Build elf service.
+ - Prerequisites
+    -- Java JDK. (Our tests are based on sun JDK 1,6, other version e.g. 1.7 or openjdk should work
         as well, but not tested). You can download JDK 1.6 from http://tinyurl.com/7w2jeyl, and 
         follow the install instruction there to get Java ready.
-    - Apache Ant. Install by: apt-get install ant
- 1.2 Compile
-    - Go to elf/floodlight dir
-    - Compile by: ant clean; ant
- 1.3 Start Elf service
-    - Go to elf/floodlight dir
-    - Start as normal floodlight controller: java -jar target/floodlight.jar
+    -- Apache Ant. Install by: apt-get install ant
+ - Compile
+    -- Go to elf/floodlight dir
+    -- Compile by: ant clean; ant
+ - Start Elf service
+    -- Go to elf/floodlight dir
+    -- Start as normal floodlight controller: java -jar target/floodlight.jar
 
-2. Build Hadoop-elf patch
- 2.1 Prerequisites: the same as 1.1
- 2.2 Compile
-    - Go to elf/hadoop dir
-    - Compile by: ant clean; ant
+ Build Hadoop-elf patch
+ - Prerequisites: the same as 1.1
+ - Compile
+    -- Go to elf/hadoop dir
+    -- Compile by: ant clean; ant
 
 
   Running elf
