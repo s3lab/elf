@@ -1,6 +1,6 @@
  
 <pre>
-                An Internet2 awarded project
+                An Internet2 Innovative Application Project
                       ________    ______
                      / ____/ /   / ____/
                     / __/ / /   / /_    
